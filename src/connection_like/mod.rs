@@ -118,6 +118,12 @@ impl std::ops::Deref for Connection<'_, '_> {
     }
 }
 
+impl std::ops::DerefMut for Connection<'_, '_> {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+
 /// Result of a [`ToConnection::to_connection`] call.
 pub enum ToConnectionResult<'a, 't: 'a> {
     /// Connection is immediately available.
